@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { AspectRatio } from "./ui/aspect-ratio";
 
 type Props = Member;
 
@@ -16,24 +17,32 @@ const { name, image, birthdate, birthplace, bloodType, description, zodiac } =
 
 <a href=`/member/${name.stage}`>
   <Card>
-    <CardHeader>
-      <CardTitle>
-        <span transition:name={name.fullname}>{name.fullname}</span>{" "}
-        <span transition:name={name.stage}>({name.stage})</span>
-      </CardTitle>
-      <CardDescription transition:name={"desc-" + name.stage}>
-        {description}
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <img
-        src={image.cover}
-        alt={name.stage}
-        transition:name=`img-${name.stage}`
-      />
-    </CardContent>
-    <CardFooter>
-      {zodiac.join(",")}
-    </CardFooter>
+    <div class="grid grid-cols-3">
+      <div class="py-6 px-4" transition:name=`icon-${name.stage}`>
+        <img
+          src={image.icon}
+          alt={`Icon of ${name.stage}`}
+          class="rounded-2xl"
+        />
+      </div>
+      <div class="col-span-2">
+        <CardHeader>
+          <CardTitle>
+            <span transition:name={name.fullname}>{name.fullname}</span>{" "}
+            <span transition:name={name.stage}>({name.stage})</span>
+          </CardTitle>
+          <CardDescription />
+        </CardHeader>
+        <CardContent>
+          <div>Birth Date: {birthdate}</div>
+          <div>Birth Place: {birthplace}</div>
+          <div>Blood Type: {bloodType}</div>
+          <div>
+            Zodiac Signs:
+            {zodiac.join(",")}
+          </div>
+        </CardContent>
+      </div>
+    </div>
   </Card>
 </a>
