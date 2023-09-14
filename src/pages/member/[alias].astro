@@ -1,8 +1,11 @@
 ---
+import { Icons } from "@/components/icons";
+import { buttonVariants } from "@/components/ui/button";
 import { members } from "@/consts";
 import Layout from "@/layouts/Layout.astro";
-import type { GetStaticPaths } from "astro";
+import { cn } from "@/lib/utils";
 import H1 from "@/typography/H1.astro";
+import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (() => {
   return members.map((member) => ({
@@ -28,14 +31,50 @@ const {
 ---
 
 <Layout title={name.stage + " | AESPA"}>
-  <H1>
-    <span transition:name={name.fullname}>{name.fullname}</span>
-    <span transition:name={name.stage}>({name.stage})</span>
-  </H1>
-  <p transition:name={`desc-${name.stage}`}>{description}</p>
-  <img
-    src={image.cover}
-    alt=`${name.stage}'s coverImg'`
-    transition:name=`img-${name.stage}`
-  />
+  <section class="max-w-[140vh] mx-auto">
+    <div class="relative flex justify-center">
+      <a
+        href="/"
+        class={cn(
+          "absolute z-40 top-2 left-2 inline-flex gap-2",
+          buttonVariants({ variant: "link" })
+        )}
+      >
+        <Icons.back />
+         Go Back</a
+      >
+      <img
+        src={image.cover}
+        alt={name.stage + "'s Cover"}
+        class="object-cover w-full"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-background to-background/60 md:to-background/40"
+      >
+      </div>
+      <div class="absolute top-1/2">
+        <div class="flex flex-row justify-start gap-4 p-6">
+          <div transition:name=`icon-${name.stage}`>
+            <img
+              src={image.icon}
+              alt={`Icon of ${name.stage}`}
+              class="rounded-full"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <H1>
+              <span transition:name={name.fullname}>{name.fullname}</span>{" "}
+              <span transition:name={name.stage}>({name.stage})</span>
+            </H1>
+            <p
+              transition:name="ok"
+              class="leading-7 [&:not(:first-child)]:mt-6"
+            >
+              {description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
