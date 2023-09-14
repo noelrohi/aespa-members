@@ -1,12 +1,19 @@
 ---
 import "@/styles/globals.css";
 import { ViewTransitions } from "astro:transitions";
-
+import { site } from "@/consts";
 interface Props {
   title: string;
+  description?: string;
+  url?: string;
+  image?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = site.description,
+  image = "/opengraph-image.jpg",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -14,34 +21,34 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <title>{title}</title>
     <meta property="og:site_name" content="aespa Members" />
-    <meta
-      name="og:description"
-      content="Transitions beautifully made with Astro 3.0, Shadcn-UI and React."
-    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={site.url} />
+    <meta property="og:site_name" content="aespa Members" />
+    <meta name="og:description" content={description} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1600" />
     <meta property="og:image:height" content="800" />
-    <meta property="og:image" content="/opengraph-image.jpg" />
+    <meta property="og:image" content={image} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="aespa Members" />
-    <meta
-      name="twitter:description"
-      content="Transitions beautifully made with Astro 3.0, Shadcn-UI and React."
-    />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image:type" content="image/png" />
     <meta name="twitter:image:width" content="1600" />
     <meta name="twitter:image:height" content="800" />
-    <meta name="twitter:image" content="/opengraph-image.jpg" />
+    <meta name="twitter:image" content={image} />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
     <ViewTransitions />
   </head>
 

@@ -1,4 +1,4 @@
-import type { Member } from "./types/members";
+import type { Member } from "@/types/members";
 
 export const members: Member[] = [
   {
@@ -93,3 +93,10 @@ export const members: Member[] = [
     },
   },
 ];
+
+export const site = {
+  title: "aespa Members",
+  description:
+    "Transitions beautifully made with Astro 3.0, Shadcn-UI and React.",
+  url: "https://aespa-members.vercel.app",
+};

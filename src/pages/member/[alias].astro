@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 import H1 from "@/typography/H1.astro";
 import type { GetStaticPaths } from "astro";
 
+export const prerender = true;
+
 export const getStaticPaths = (() => {
   return members.map((member) => ({
     params: {
@@ -32,7 +34,11 @@ const {
 } = member;
 ---
 
-<Layout title={name.stage + " | aespa"}>
+<Layout
+  title={name.stage + " | aespa"}
+  image={image.cover}
+  description={description}
+>
   <section class="max-w-[140vh] mx-auto">
     <div class="relative flex justify-center">
       <a
