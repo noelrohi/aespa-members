@@ -1,3 +1,5 @@
+import type { Member } from "./types/members";
+
 export const members: Member[] = [
   {
     name: {
@@ -17,6 +19,9 @@ export const members: Member[] = [
     height: "165 cm (5'5)",
     bloodType: "A",
     zodiac: ["Dragon, Capricorn"],
+    socials: {
+      instagram: "https://www.instagram.com/imwinter/",
+    },
   },
   {
     name: {
@@ -36,6 +41,11 @@ export const members: Member[] = [
     height: "167.8 cm (5'6)",
     bloodType: "B",
     zodiac: ["Aries, Dragon"],
+    socials: {
+      twitter: "https://twitter.com/just_0411",
+      instagram: "https://www.instagram.com/katarinabluu/",
+      youtube: "https://www.youtube.com/@Karinasocute",
+    },
   },
   {
     name: {
@@ -55,6 +65,9 @@ export const members: Member[] = [
     height: "163.5 cm (5'4)",
     bloodType: "O",
     zodiac: ["Scorpio, Dragon"],
+    socials: {
+      instagram: "https://www.instagram.com/aerichandesu/",
+    },
   },
   {
     name: {
@@ -75,5 +88,8 @@ export const members: Member[] = [
     bloodType: "O",
     weight: "43 kg (94 lbs)",
     zodiac: ["Libra, Horse"],
+    socials: {
+      instagram: "https://www.instagram.com/imnotningning/",
+    },
   },
 ];

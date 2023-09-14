@@ -1,4 +1,6 @@
-type Member = {
+import { z } from "astro/zod";
+
+export type Member = {
   name: {
     stage: string;
     fullname: string;
@@ -15,4 +17,11 @@ type Member = {
   weight?: string;
   bloodType: string;
   zodiac: string[];
+  socials: z.infer<typeof socialSchema>;
 };
+
+const socialSchema = z.object({
+  twitter: z.string().optional(),
+  instagram: z.string().optional(),
+  youtube: z.string().optional(),
+});

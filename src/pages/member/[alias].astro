@@ -1,5 +1,6 @@
 ---
 import { Icons } from "@/components/icons";
+import { SocialList } from "@/components/social-list";
 import { buttonVariants } from "@/components/ui/button";
 import { members } from "@/consts";
 import Layout from "@/layouts/Layout.astro";
@@ -27,6 +28,7 @@ const {
   zodiac,
   height,
   weight,
+  socials,
 } = member;
 ---
 
@@ -54,13 +56,19 @@ const {
       </div>
       <div class="absolute top-1/2">
         <div class="flex flex-row justify-start gap-4 p-6">
-          <div transition:name=`icon-${name.stage}`>
-            <img
-              src={image.icon}
-              alt={`Icon of ${name.stage}`}
-              class="rounded-full"
-            />
+          <div class="flex flex-col gap-4">
+            <div transition:name=`icon-${name.stage}`>
+              <img
+                src={image.icon}
+                alt={`Icon of ${name.stage}`}
+                class="rounded-full"
+              />
+            </div>
+            <div class="flex flex-col justify-center gap-4 px-4">
+              <SocialList {socials} />
+            </div>
           </div>
+
           <div class="flex flex-col gap-2">
             <H1>
               <span transition:name={name.fullname}>{name.fullname}</span>{" "}
