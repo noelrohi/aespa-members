@@ -1,7 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
+import { members } from "@/consts";
+import MemberCard from "@/components/MemberCard.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>aSHDJHASKDKJHASHJKDHJKASDKHJ</main>
+  <main>
+    {members.map((member) => <MemberCard {...member} />)}
+  </main>
 </Layout>

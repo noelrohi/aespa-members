@@ -1,0 +1,29 @@
+---
+import { members } from "@/consts";
+import Layout from "@/layouts/Layout.astro";
+import type { GetStaticPaths } from "astro";
+export const getStaticPaths = (() => {
+  return members.map((member) => ({
+    params: {
+      alias: member.name.stage,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { alias } = Astro.params;
+const member = members.find((m) => m.name.stage === alias)!;
+---
+
+<Layout title={member.name.stage}>
+  <div class="container flex justify-end">
+    <h1 transition:name=`fullname-${member.name.stage}`>
+      {member.name.fullname} ({member.name.stage})
+    </h1>
+    <p>{member.description}</p>
+    <img
+      src={member.image.cover}
+      alt=`${member.name.stage}'s coverImg'`
+      transition:name=`img-${member.name.stage}`
+    />
+  </div>
+</Layout>

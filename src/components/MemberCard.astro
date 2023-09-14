@@ -1,0 +1,13 @@
+---
+type Props = Member;
+
+const { name, image, birthdate, birthplace, bloodType, description, zodiac } =
+  Astro.props;
+---
+
+<a href=`/member/${name.stage}`>
+  <div transition:name=`fullname-${name.stage}`>
+    {name.fullname}
+  </div>
+  <img src={image.cover} alt={name.stage} transition:name=`img-${name.stage}` />
+</a>
