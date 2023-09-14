@@ -1,4 +1,13 @@
 ---
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
 type Props = Member;
 
 const { name, image, birthdate, birthplace, bloodType, description, zodiac } =
@@ -6,8 +15,25 @@ const { name, image, birthdate, birthplace, bloodType, description, zodiac } =
 ---
 
 <a href=`/member/${name.stage}`>
-  <div transition:name=`fullname-${name.stage}`>
-    {name.fullname}
-  </div>
-  <img src={image.cover} alt={name.stage} transition:name=`img-${name.stage}` />
+  <Card>
+    <CardHeader>
+      <CardTitle>
+        <span transition:name={name.fullname}>{name.fullname}</span>{" "}
+        <span transition:name={name.stage}>({name.stage})</span>
+      </CardTitle>
+      <CardDescription transition:name={"desc-" + name.stage}>
+        {description}
+      </CardDescription>
+    </CardHeader>
+    <CardContent>
+      <img
+        src={image.cover}
+        alt={name.stage}
+        transition:name=`img-${name.stage}`
+      />
+    </CardContent>
+    <CardFooter>
+      {zodiac.join(",")}
+    </CardFooter>
+  </Card>
 </a>

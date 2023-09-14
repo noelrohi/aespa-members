@@ -4,8 +4,8 @@ import { members } from "@/consts";
 import MemberCard from "@/components/MemberCard.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main>
+<Layout title="AESPA Members.">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
     {members.map((member) => <MemberCard {...member} />)}
-  </main>
+  </div>
 </Layout>

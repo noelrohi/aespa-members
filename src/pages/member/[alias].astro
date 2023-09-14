@@ -2,6 +2,8 @@
 import { members } from "@/consts";
 import Layout from "@/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
+import H1 from "@/typography/H1.astro";
+
 export const getStaticPaths = (() => {
   return members.map((member) => ({
     params: {
@@ -12,18 +14,28 @@ export const getStaticPaths = (() => {
 
 const { alias } = Astro.params;
 const member = members.find((m) => m.name.stage === alias)!;
+const {
+  birthdate,
+  birthplace,
+  bloodType,
+  description,
+  image,
+  name,
+  zodiac,
+  height,
+  weight,
+} = member;
 ---
 
-<Layout title={member.name.stage}>
-  <div class="container flex justify-end">
-    <h1 transition:name=`fullname-${member.name.stage}`>
-      {member.name.fullname} ({member.name.stage})
-    </h1>
-    <p>{member.description}</p>
-    <img
-      src={member.image.cover}
-      alt=`${member.name.stage}'s coverImg'`
-      transition:name=`img-${member.name.stage}`
-    />
-  </div>
+<Layout title={name.stage + " | AESPA"}>
+  <H1>
+    <span transition:name={name.fullname}>{name.fullname}</span>
+    <span transition:name={name.stage}>({name.stage})</span>
+  </H1>
+  <p transition:name={`desc-${name.stage}`}>{description}</p>
+  <img
+    src={image.cover}
+    alt=`${name.stage}'s coverImg'`
+    transition:name=`img-${name.stage}`
+  />
 </Layout>
