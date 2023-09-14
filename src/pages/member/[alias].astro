@@ -49,6 +49,8 @@ const {
         src={image.cover}
         alt={name.stage + "'s Cover"}
         class="object-cover w-full"
+        decoding="async"
+        loading="lazy"
       />
       <div
         class="absolute inset-0 bg-gradient-to-t from-background to-background/60 md:to-background/40"
@@ -62,6 +64,8 @@ const {
                 src={image.icon}
                 alt={`Icon of ${name.stage}`}
                 class="rounded-full"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="flex flex-col justify-center gap-4 px-4">
