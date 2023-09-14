@@ -5,9 +5,9 @@ import MemberCard from "@/components/MemberCard.astro";
 import H1 from "@/components/typography/H1.astro";
 ---
 
-<Layout title="AESPA Members.">
+<Layout title="aespa Members.">
   <div class="flex flex-col justify-center items-center h-screen">
-    <H1>AESPA Members</H1>
+    <H1>aespa Members</H1>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 py-6 lg:py-8">
       {members.map((member) => <MemberCard {...member} />)}
     </div>
