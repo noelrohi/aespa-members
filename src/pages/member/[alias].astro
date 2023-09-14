@@ -6,18 +6,7 @@ import { members } from "@/consts";
 import Layout from "@/layouts/Layout.astro";
 import { cn } from "@/lib/utils";
 import H1 from "@/typography/H1.astro";
-import type { GetStaticPaths } from "astro";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-
-export const prerender = true;
-
-export const getStaticPaths = (() => {
-  return members.map((member) => ({
-    params: {
-      alias: member.name.stage,
-    },
-  }));
-}) satisfies GetStaticPaths;
 
 const { alias } = Astro.params;
 const member = members.find((m) => m.name.stage === alias)!;
